@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LightsOutAndroid</string>
+    <string name="play_text">Play</string>
+    <string name="about_text">About</string>
+    <string name="exit_text">Exit</string>
+    <string name="title_name">Lights Out!</string>
+    <string name="resume">Resume</string>
+</resources>

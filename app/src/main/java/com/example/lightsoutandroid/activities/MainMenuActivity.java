@@ -2,6 +2,7 @@ package com.example.lightsoutandroid.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -46,16 +47,37 @@ public class MainMenuActivity extends AppCompatActivity implements Serializable 
          exitButton = this.findViewById(R.id.exitButton);
 
         playIntent = new Intent(this, GameActivity.class);
+        aboutIntent = new Intent(this,AboutActivity.class);
 
         clickListener = new OnItemClickListener() {
             @Override
             public void OnClick(View view) {
                 if (view.getId() == R.id.playButton) {
                     startActivity(playIntent);
+                } else if (view.getId() == R.id.aboutButton) {
+                    startActivity(aboutIntent);
+                } else if (view.getId() == R.id.exitButton)
+                {
+                    finish();
                 }
             }
+
         };
 
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    clickListener.OnClick(aboutButton);
+            }
+        });
+
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clickListener.OnClick(exitButton);
+            }
+        });
 
 
         playButton.setOnClickListener(new View.OnClickListener() {

@@ -1,5 +1,6 @@
 package com.example.lightsoutandroid.interfaces;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 

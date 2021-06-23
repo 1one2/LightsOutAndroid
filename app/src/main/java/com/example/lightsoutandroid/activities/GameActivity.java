@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
 import android.widget.Chronometer;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.lightsoutandroid.ApplicationController;
@@ -25,29 +28,41 @@ public class GameActivity extends AppCompatActivity implements Serializable {
 
     private RecyclerView recyclerView;
 
+    private boolean isGamePaused = false;
 
-    private ImageView pauseMenuImage;
+    private ImageView pauseImage;
     private ImageView startRestartImage;
     private ImageView backImage;
 
+    private ImageButton resumeGame;
+
+    private FrameLayout pauseMenu;
+
     private Chronometer timer;
+
+    private Chronometer timerPausedMenu = new Chronometer(ApplicationController.getInstance());
+
     private OnItemClickListener clickListener;
+
     private Board board = new Board();
+
+    private long elapsedSeconds;
+    private long timeSpendPaused = 0;
 
 
     private MyAdapter adapter = new MyAdapter(board, new LightClickListener() {
         @Override
         public void onLightClicked(Light light) {
-            board.switchLights(board.getLights().indexOf(light));
-            if(board.isGameDone())
-            {
-                timer.stop();
-                long elapsedSeconds = (SystemClock.elapsedRealtime() - timer.getBase())/1000;
-                Toast.makeText(ApplicationController.getInstance(),"You solved the puzzle in " + elapsedSeconds + " seconds.",Toast.LENGTH_LONG).show();
+            if(!board.isGameDone() && !isGamePaused) {
+                board.switchLights(board.getLights().indexOf(light));
+                if (board.isGameDone()) {
+                    timer.stop();
+                    elapsedSeconds = (SystemClock.elapsedRealtime() - timer.getBase()) / 1000;
+                    Toast.makeText(ApplicationController.getInstance(), "You solved the puzzle in " + elapsedSeconds + " seconds.", Toast.LENGTH_LONG).show();
 
-
+                }
+                adapter.notifyDataSetChanged();
             }
-            adapter.notifyDataSetChanged();
         }
     });
 
@@ -64,6 +79,11 @@ public class GameActivity extends AppCompatActivity implements Serializable {
 
         startRestartImage = findViewById(R.id.playImageView);
         backImage = findViewById(R.id.backImageView);
+        pauseImage = findViewById(R.id.pauseImageView);
+
+        pauseMenu = findViewById(R.id.pausedLayout);
+        resumeGame = pauseMenu.findViewById(R.id.resumeGamePlay);
+
 
 
         RecyclerView recyclerView = findViewById(R.id.boardGridView);
@@ -84,14 +104,50 @@ public class GameActivity extends AppCompatActivity implements Serializable {
             }
         });
 
+        pauseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isGamePaused) {
+                    pauseMenu.setVisibility(View.VISIBLE);
+                    pauseMenu.bringToFront();
+
+                    isGamePaused = true;
+
+
+                    timer.stop();
+
+                    timerPausedMenu.setBase(SystemClock.elapsedRealtime());
+                    timerPausedMenu.start();
+                }
+            }
+        });
+
+        resumeGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pauseMenu.setVisibility(View.INVISIBLE);
+                isGamePaused = false;
+
+                timerPausedMenu.stop();
+
+                timeSpendPaused = (SystemClock.elapsedRealtime() - timerPausedMenu.getBase());
+
+                timer.setBase(timer.getBase() + timeSpendPaused);
+
+                timer.start();
+            }
+        });
+
         startRestartImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timer.stop();
-                board.initBoard();
-                adapter.notifyDataSetChanged();
-                timer.setBase(SystemClock.elapsedRealtime());
-                timer.start();
+                if(!isGamePaused) {
+                    timer.stop();
+                    board.initBoard();
+                    adapter.notifyDataSetChanged();
+                    timer.setBase(SystemClock.elapsedRealtime());
+                    timer.start();
+                }
             }
         });
 

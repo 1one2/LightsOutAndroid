@@ -5,4 +5,8 @@
     <string name="exit_text">Exit</string>
     <string name="title_name">Lights Out!</string>
     <string name="resume">Resume</string>
+    <string name="about_title">About this app</string>
+    <string name="start_string">Play/\nRestart</string>
+    <string name="pause_string">Pause</string>
+    <string name="about_content">This app has been developed by Matache David Mihai and Tingaiala Maxim for the Android Course inside of the Faculty of Mathematics and Informatics inside of the Transilvania Brasov University.</string>
 </resources>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.Ranking"
+    android:background="@drawable/app_background">
+    
+    
+    <TextView
+        android:id="@+id/rankingMenuTitle"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/ranking"
+        android:textColor="@color/white"
+        android:textSize="80sp"
+        android:fontFamily="@font/robotobolditalic"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+
+        android:textColor="@color/white"
+        android:fontFamily="@font/robotoitalic"
+        android:text="@string/refresh"
+        android:textSize="23sp"
+
+        app:layout_constraintTop_toBottomOf="@id/rankingMenuTitle"
+        app:layout_constraintRight_toLeftOf="@id/rankingMenuRefresh"
+        />
+
+    <ImageView
+        android:id="@+id/rankingMenuRefresh"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:padding="10dp"
+
+        android:src="@raw/refresh"
+        app:layout_constraintTop_toBottomOf="@id/rankingMenuTitle"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rankingMenuRecyclerView"
+
+        android:layout_width="match_parent"
+        android:layout_height="420sp"
+
+        app:layout_constraintTop_toBottomOf="@id/rankingMenuRefresh"
+        app:layout_constraintBottom_toTopOf="@id/rankingMenuBackButton"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:visibility="visible"
+        />
+
+    
+    
+    
+    <ImageView
+        android:id="@+id/rankingMenuBackButton"
+
+        android:layout_width="90sp"
+        android:layout_height="90sp"
+        android:padding="10dp"
+
+        android:src="@raw/back"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

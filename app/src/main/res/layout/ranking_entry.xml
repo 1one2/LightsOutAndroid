@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150sp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/ranking_entry_background">
+    
+    <TextView
+        android:id="@+id/place"
+
+        android:layout_width="100sp"
+        android:layout_height="match_parent"
+
+        android:text="nTH"
+        android:textColor="@color/black"
+        android:textSize="42sp"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:fontFamily="@font/robotoitalic"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+    
+    <TextView
+        android:id="@+id/playerName"
+
+        android:layout_width="200sp"
+        android:layout_height="match_parent"
+
+        android:text="Player name is"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:fontFamily="@font/robotoitalic"
+        android:textColor="@color/black"
+        android:textSize="42sp"
+        android:ellipsize="end"
+        android:lines="1"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/place"/>
+    
+    
+    <TextView
+        android:id="@+id/time"
+
+        android:layout_width="100sp"
+        android:layout_height="match_parent"
+
+        android:text="300s"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/robotoitalic"
+        android:ellipsize="end"
+        android:lines="1"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

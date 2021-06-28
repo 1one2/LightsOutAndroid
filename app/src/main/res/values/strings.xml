@@ -1,12 +1,16 @@
 <resources>
-    <string name="app_name">LightsOutAndroid</string>
-    <string name="play_text">Play</string>
-    <string name="about_text">About</string>
-    <string name="exit_text">Exit</string>
-    <string name="title_name">Lights Out!</string>
+    <string name="app_name">Light`s Out</string>
+    <string name="play">Play</string>
+    <string name="ranking">Ranking</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
+    <string name="pause">Pause</string>
+    <string name="submit">Submit \n your time</string>
+    <string name="restart">Restart</string>
+    <string name="paused">Game is paused</string>
     <string name="resume">Resume</string>
-    <string name="about_title">About this app</string>
-    <string name="start_string">Play/\nRestart</string>
-    <string name="pause_string">Pause</string>
-    <string name="about_content">This app has been developed by Matache David Mihai and Tingaiala Maxim for the Android Course inside of the Faculty of Mathematics and Informatics inside of the Transilvania Brasov University.</string>
+    <string name="hint">Enter your name</string>
+    <string name="refresh">Click to refresh</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
